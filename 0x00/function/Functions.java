@@ -18,13 +18,11 @@ public class Functions {
         return userService.save(user);
     }
 
-    // Arguments - Option A (minimal arguments)
-    public void saveUser(User user) {
-        // Implementation would go here
-    }
-
-    // No side effects - Option B (separate concerns, no hidden side effects)
-    public User saveUser(User user) {
+    // No side effects - demonstrating the pattern but with proper separation
+    public User saveUserWithSideEffect(User user) {
+        if(user.isAdmin) {
+            user.setRole(user);
+        }
         return userRepository.save(user);
     }
 
